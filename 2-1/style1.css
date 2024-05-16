@@ -1,0 +1,63 @@
+/* 全要素のmarginとpaddingをゼロに設定 */
+*{
+    margin: 0;
+    padding: 0;
+}
+/* ページ全体のブロック */
+#wrapper{
+    /* 全体ブロックの横幅を設定 */
+    width: 400px;
+    /* 全体ブロック標示位置を中央寄せ。 */
+    margin: 0 auto;
+}
+/* ヘッダーのブロック */
+.header{
+    /* 縦を設定 */
+    height: 100px;
+    /* 横幅を設定 */
+    width: 100%;
+    /* 背景色を設定 */
+    background: #141f40;
+}
+/* メインのブロック */
+.main{
+    /* 縦幅を設定 */
+    height: 250px;
+}
+/* メイン内にある左のブロック */
+.left{
+    /* 縦幅を設定 */
+    height: 100%;
+    /* 横幅を設定 */
+    width: 150px;
+    /* 背景色を設定 */
+    background: #8c2727;
+    /* float メインブロックを基準に左寄せ */
+    float: left;
+}
+/* メイン内にある右のブロック */
+.right{
+    /* 縦幅を設定 */
+    height: 100%;
+    /* 横幅を設定 */
+    width: 250px;
+    /* 背景色を設定 */
+    background: #80bfa8;
+    /* float メインブロックを基準に左寄せ */
+    float: left;
+}
+/* フッターのブロック */
+.footer{
+    /* フッターブロックの縦幅を設定 */
+    height: 100px;
+    /* 横幅を設定 */
+    width: 100%;
+    /* 背景色を設定 */
+    background: #d98d30;
+}
+/* floatで上の階層に上がったボックスを他と同じ階層に戻す*/
+.clearfix::after{
+    content:'';
+    display: block;
+    clear: both;
+}

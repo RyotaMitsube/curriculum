@@ -1,0 +1,42 @@
+/* 【ウィンドウ幅が767pxまでの場合】 */
+@media screen and (max-width : 767px){
+    /* ページ全体のブロック */
+    #wrapper{
+        /* 全体ブロックの横幅を設定 */
+        width: 250px;
+    }
+    /* メイン内にある右のブロック */
+    .right{
+        /* 横幅を設定 */
+        width: 100px;
+    }
+}
+/* 【ウィンドウ幅が479pxまでの場合】 */
+@media screen and (max-width : 479px){
+    /* ページ全体のブロック */
+    #wrapper{
+        /* 全体ブロックの横幅を設定 */
+        width: 150px;
+    }
+    /* メインのブロック */
+    .main{
+        /* 縦幅を設定 */
+        height: auto; /* auto → 内部コンテンツの幅(今回の場合はleftとrightのこと)によって自動で決まる */
+    }
+    /* メイン内にある左のブロック */
+    .left{
+        /* 縦幅の設定 */
+        height: 250px;
+        /* floatの解除(無効化) */
+        float:none; /* none → floatプロパティをなかったことにできる特殊な値 */
+    }
+    /* メイン内にある右のブロック */
+    .right{
+        /* 縦幅の設定 */
+        height: 250px;
+        /* 横幅を設定 */
+        width: 100%;
+        /* floatの解除(無効化) */
+        float: none;
+    }
+}
