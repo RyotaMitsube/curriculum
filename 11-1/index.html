@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        #japanese,
+        #english {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>[ 言語 ]</th>
+            <td>挨拶</td>
+            <td>感謝</td>
+            <td>別れの言葉</td>
+        </tr>
+    </table>
+
+    <span>ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー</span>
+    <select id="selectbox" onchange="changelang()">
+        <option id="select">言語を選択してください</option>
+        <option id="selected_jpn">日本語</option>
+        <option id="selected_en">English</option>
+        <option id="selected_all">全て表示</option>
+    </select>
+
+    <table>
+        <tr id="japanese">
+            <th>[ 日本語 ]</th>
+            <td>こんにちは</td>
+            <td>ありがとう</td>
+            <td>さようなら</td>
+        </tr>
+        <tr id="english">
+            <th>[ English ]</th>
+            <td>Hello</td>
+            <td>Thank you</td>
+            <td>Good Bye</td>
+        </tr>
+    </table>
+
+    <script>
+        //文字列定数_idの比較用
+        const empty = "select";
+        const jp = "selected_jpn";
+        const en = "selected_en";
+        const all = "selected_all";
+
+        //表示する文字列の取得(id)
+        const jpText = document.getElementById("japanese");
+        const enText = document.getElementById("english");
+
+        //①onchangeで使用されている関数の中身を実装してください。
+        function changelang() {
+
+            //selectタグで選択されたオプションと該当オプションのIDを取得
+            const select = document.getElementById("selectbox");
+            const option = select.options[select.selectedIndex];
+            const optionId = option.id;
+
+            //表示制御
+            if (optionId == empty) {
+                jpText.style.display = 'none';
+                enText.style.display = 'none';
+            } else if (optionId == jp) {
+                jpText.style.display = 'block';
+                enText.style.display = 'none';
+            } if (optionId == en) {
+                jpText.style.display = 'none';
+                enText.style.display = 'block';
+            } if (optionId == all) {
+                jpText.style.display = 'block';
+                enText.style.display = 'block';
+            }
+
+        }
+    </script>
+</body>
+
+</html>
