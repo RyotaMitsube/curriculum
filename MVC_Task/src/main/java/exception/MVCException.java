@@ -1,6 +1,6 @@
-package skillcheck.exception;
+package exception;
 
-import skillcheck.bean.ResponseBean;
+import bean.ResponseBean;
 
 /**
  * カスタムException

@@ -1,4 +1,4 @@
-package skillcheck.util;
+package util;
 
 public final class RequestTypeUtil {
 

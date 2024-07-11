@@ -6,7 +6,7 @@
 	<display-name>MVC_Task</display-name>
 	<servlet>
 		<servlet-name>employee</servlet-name>
-		<servlet-class>skillcheck.controller.EmployeeManagementController</servlet-class>
+		<servlet-class>controller.EmployeeManagementController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>employee</servlet-name>

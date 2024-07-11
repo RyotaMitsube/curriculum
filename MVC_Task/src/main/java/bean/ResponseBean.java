@@ -1,4 +1,4 @@
-package skillcheck.bean;
+package bean;
 
 import java.util.List;
 

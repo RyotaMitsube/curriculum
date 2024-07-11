@@ -1,4 +1,4 @@
-package skillcheck.constant;
+package constant;
 
 /**
  * JDBC、SQL関連の定数
@@ -14,7 +14,7 @@ public final class ConstSQL {
     /** JDMC接続先情報 */
     // MEMO: PostgreSQLを複数バージョン使用している場合は、ポート番号も指定
     // TODO: 接続先のポート番号は個々で異なるため、pgAdminのPostgreSQLより、接続先設定を参照してXXXXへ記述すること。
-    public static final String JDBC_CONNECTION = "jdbc:postgresql://localhost:5434/lesson_db?useUnicode=true&characterEncoding=utf8";
+    public static final String JDBC_CONNECTION = "jdbc:postgresql://localhost:5432/lesson_db?useUnicode=true&characterEncoding=utf8";
     /** ユーザー名 */
     public static final String JDBC_POSTGRES_USER = "postgres";
     /** パスワード */
@@ -22,10 +22,14 @@ public final class ConstSQL {
 
     // FIXME Step-2: 以下のSELECT文、INSERT文、UPDATE文を記述しなさい
     // Tips: 更新値や条件値には「?」を使用してください
-
+    public static final String SELECT = "SELECT * FROM employee";
+    public static final String INSERT = "INSERT INTO employee (empid, password, name, mail, programinglanguage, comment, createdate, updatedate, deleteflg)"
+    		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String UPDATE = "UPDATE employee_table SET empid = ? password = ? name = ? mail = ? programinglanguage = ? comment = ? createdate = ? updatedate = ? deleteflg = ?";
+    
     // FIXME Step-2-1: [SQL-SELECT] 社員情報テーブルより、作成日時、更新日時、削除フラグを除いたカラムを取得するクエリを作成しなさい。
     /** 社員情報一覧取得用クエリ: 取得カラム + 取得元テーブル */
-    public static final String SELECT_BASE = "ここへ記述";
+    public static final String SELECT_BASE = "SELECT empid, password, name, mail, programinglanguage, comment FROM employee";
     /** 社員情報一覧取得用クエリ: 削除されていない社員情報を社員番号順に取得 */
     public static final String SELECT_BY_DELETE_FLG_ZERO = " WHERE deleteFlg = '0' ORDER BY empId";
     /** 社員番号を条件とするクエリ: 完全一致 */

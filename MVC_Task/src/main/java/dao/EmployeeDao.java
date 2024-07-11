@@ -1,8 +1,8 @@
-package skillcheck.dao;
+package dao;
 
-import skillcheck.bean.EmployeeBean;
-import skillcheck.bean.ResponseBean;
-import skillcheck.exception.MVCException;
+import bean.EmployeeBean;
+import bean.ResponseBean;
+import exception.MVCException;
 
 /**
  * インターフェース（DAO）

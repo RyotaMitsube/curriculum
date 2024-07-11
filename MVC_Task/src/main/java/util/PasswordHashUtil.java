@@ -1,4 +1,4 @@
-package skillcheck.util;
+package util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -8,7 +8,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-import skillcheck.logger.Logger;
+import logger.Logger;
 
 /**
  * パスワードハッシュユーティリティ

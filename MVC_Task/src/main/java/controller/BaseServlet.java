@@ -1,4 +1,4 @@
-package skillcheck.controller;
+ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import skillcheck.bean.EmployeeBean;
-import skillcheck.bean.ResponseBean;
-import skillcheck.constant.ConstMessage;
-import skillcheck.dao.EmployeeDao.ExecuteCase;
-import skillcheck.exception.MVCException;
-import skillcheck.logger.Logger;
-import skillcheck.service.EmployeeManagementService;
-import skillcheck.util.PasswordHashUtil;
+import bean.EmployeeBean;
+import bean.ResponseBean;
+import constant.ConstMessage;
+import dao.EmployeeDao.ExecuteCase;
+import exception.MVCException;
+import logger.Logger;
+import service.EmployeeManagementService;
+import util.PasswordHashUtil;
 
 /**
  * サーブレット: 親クラス
@@ -31,7 +31,7 @@ public abstract class BaseServlet extends HttpServlet {
 
     // FIXME Step-3: 定数定義
     // FIXME Step-3-1: リクエスト判別用のボタンの属性名を記述しなさい。
-    protected static final String CONST_ELEMENT_NAME_REQUEST = "ここへ記述";
+    protected static final String CONST_ELEMENT_NAME_REQUEST = "requestType";
     protected static final String CONST_REQUST_KEY_FOR_SENDER = "sender";
     protected static final String CONST_REQUST_KEY_FOR_REDIRECT = "redirect";
     protected static final String CONST_REQUST_KEY_FOR_RESPONSE_BEAN = "responseBean";
@@ -39,7 +39,7 @@ public abstract class BaseServlet extends HttpServlet {
     /** ・リクエスト対象（リクエスト&レスポンスを渡す先）のjspファイル */
     protected static final String CONST_DESTINATION_LOGIN_JSP = "/MVC_Task/login.jsp";
     // FIXME Step-3-2: 実行結果表示用のjspファイルのパスを記述しなさい。
-    protected static final String CONST_DESTINATION_RESULT_JSP = "";
+    protected static final String CONST_DESTINATION_RESULT_JSP = "/employeeResult.jsp";
 
     /* フィールド変数の定義 */
     /** フォーワード先 */
@@ -150,11 +150,13 @@ public abstract class BaseServlet extends HttpServlet {
             // Tips1: 社員情報管理サービスはインスタンスが生成済みのものを利用すること
             // Tips2: 完全一致検索の社員情報取得を呼び出すこと
             // Tips3: 第二引数の渡し方に注意すること
-            // ←ここへ記述
-
+            // ←ここへ記述 
+        	EmployeeBean pEmployeeBean = new EmployeeBean(reqEmpId);
+        	responseBean = ems.getEmployeeData(ExecuteCase.FIND_BY_EMPID, pEmployeeBean);
+        	
             // 最初の1件を取得
             resEmployeeBean = responseBean.getEmplyeeBeanList().stream().findFirst().orElse(null);
-
+            
             if (Objects.nonNull(resEmployeeBean)) {
                 // パスワードチェック
                 final String hashPassword = PasswordHashUtil.getSafetyPassword(reqPassword, reqEmpId);
@@ -173,7 +175,7 @@ public abstract class BaseServlet extends HttpServlet {
                 message = ConstMessage.ERROR_UNMATCH_USER;
             }
             this.responseBean.setMessage(message);
-
+            
         } catch (NullPointerException e) {
             this.executeSetExceptionInfo(e, ConstMessage.EXCEPTION_NULL, 0);
         } catch (MVCException e) {
@@ -187,11 +189,11 @@ public abstract class BaseServlet extends HttpServlet {
             }
         }
         Logger.log(new Throwable(), "isLoginError = " + isLoginError);
-
+        
         Logger.logEnd(new Throwable());
         return isLoginError;
     }
-
+    
     /**
      * 例外処理時のリクエストステータス・メッセージ情報のセット
      *
@@ -206,5 +208,7 @@ public abstract class BaseServlet extends HttpServlet {
         if (listSize < 0) return;
         this.responseBean.setEmplyeeBeanList(new ArrayList<>(listSize));
     }
-
+    
+    
+    
 }

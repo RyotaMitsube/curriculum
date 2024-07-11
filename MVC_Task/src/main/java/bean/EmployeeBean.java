@@ -1,4 +1,4 @@
-package skillcheck.bean;
+package bean;
 
 /**
  * ・社員情報データ（モデル）
@@ -15,6 +15,8 @@ public final class EmployeeBean {
     private String _empId;
     /** ・パスワード */
     private String _password;
+    /** ・名前 */
+    private String _name;
     /** ・メールアドレス */
     private String _mail;
     /** ・得意言語 or 学習中の言語 */
@@ -92,7 +94,7 @@ public final class EmployeeBean {
     }
 
     /**
-     * @param empId <pre>セットするStringクラスのパスワード</pre>
+     * @param password <pre>セットするStringクラスのパスワード</pre>
      */
     public void setPassword(String password) {
         this._password = password;
@@ -106,6 +108,18 @@ public final class EmployeeBean {
     /**
      * @param name <pre>セットするStringクラスの氏名</pre>
      */
+    public void setName(String name) {
+    	this._name = name;
+    }
+    /** @return String型の氏名 */
+    public String getName() {
+        return _name;
+    }
+    
+
+    /**
+     * @param mail <pre>セットするStringクラスの氏名</pre>
+     */
     public void setMail(String mail) {
         this._mail = mail;
     }
@@ -116,7 +130,7 @@ public final class EmployeeBean {
     }
 
     /**
-     * @param comment <pre>セットするStringクラスのプログラミング言語</pre>
+     * @param programingLanguage <pre>セットするStringクラスのプログラミング言語</pre>
      */
     public void setProgramingLanguage(String programingLanguage) {
         this._programingLanguage = programingLanguage;
@@ -128,13 +142,13 @@ public final class EmployeeBean {
     }
 
     /**
-     * @param comment <pre>セットするStringクラスの社員番号</pre>
+     * @param comment <pre>セットするStringクラスのコメント</pre>
      */
     public void setComment(String comment) {
         this._comment = comment;
     }
 
-    /** @return String型の号コメント */
+    /** @return String型のコメント */
     public String getComment() {
         return _comment;
     }
@@ -146,7 +160,7 @@ public final class EmployeeBean {
         this._deleteFlg = deleteFlg;
     }
 
-    /** @return String型の号コメント */
+    /** @return String型の削除フラグ */
     public String getDeleteFlg() {
         return _deleteFlg;
     }

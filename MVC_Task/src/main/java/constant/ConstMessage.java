@@ -1,4 +1,4 @@
-package skillcheck.constant;
+package constant;
 
 /**
  * ・メッセージ関連の定数
